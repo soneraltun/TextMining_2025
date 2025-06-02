@@ -66,7 +66,7 @@ public class LuceneUrlIndexer {
         }
 
         writer.close();
-        System.out.println("✔ BZ2 dosyasından indeksleme tamamlandı.");
+        System.out.println("BZ2 dosyasından indeksleme tamamlandı.");
     }
 
     public static void search(String queryStr) throws Exception {
