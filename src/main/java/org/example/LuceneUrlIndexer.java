@@ -86,4 +86,14 @@ public class LuceneUrlIndexer {
 
         reader.close();
     }
+    public static Analyzer createWordTokenizerAnalyzer() {
+        return new Analyzer() {
+            @Override
+            protected TokenStreamComponents createComponents(String fieldName) {
+                Tokenizer tokenizer = new StandardTokenizer(); 
+                TokenStream filter = new LowerCaseFilter(tokenizer); 
+                return new TokenStreamComponents(tokenizer, filter);
+            }
+        };
+    }
 }
