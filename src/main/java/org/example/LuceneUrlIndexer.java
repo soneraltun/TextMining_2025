@@ -25,7 +25,8 @@ public class LuceneUrlIndexer {
 
     public static void indexUrlsFromBz2File(String bz2FilePath) throws IOException {
         Directory dir = FSDirectory.open(Paths.get(INDEX_DIR));
-        Analyzer analyzer = new StandardAnalyzer();
+        Analyzer analyzer = new createWordTokenizerAnalyzer();
+        //Analyzer analyzer = new createLetterAnalyzer();
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         IndexWriter writer = new IndexWriter(dir, config);
 
@@ -93,6 +94,17 @@ public class LuceneUrlIndexer {
                 Tokenizer tokenizer = new StandardTokenizer(); 
                 TokenStream filter = new LowerCaseFilter(tokenizer); 
                 return new TokenStreamComponents(tokenizer, filter);
+            }
+        };
+    }
+     public static Analyzer createLetterAnalyzer() {
+        return new Analyzer() {
+            @Override
+            protected TokenStreamComponents createComponents(String fieldName) {
+                Tokenizer tokenizer = new LetterTokenizer();
+                TokenStream filter = new LowerCaseFilter(tokenizer);
+                return new TokenStreamComponents(tokenizer, filter);
+
             }
         };
     }
