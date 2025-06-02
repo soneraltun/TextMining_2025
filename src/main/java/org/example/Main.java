@@ -32,16 +32,11 @@ import java.util.Map;
 import static org.example.LuceneUrlIndexer.indexUrlsFromBz2File;
 import static org.example.LuceneUrlIndexer.search;
 
-;
-
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main{
     public static void main(String[] args) {
         try {
             String bz2Path = "ClueWeb12_All_edocid2url.txt.bz2";
-            indexUrlsFromBz2File(bz2Path); // URL'leri indeksle
+            indexUrlsFromBz2File(bz2Path);
 
             // Tüm topic dosyalarını sırayla oku
             Map<String, String> allQueries = new LinkedHashMap<>();
@@ -64,7 +59,7 @@ public class Main{
                 }
             }
             writer.close();
-            System.out.println("✔ Arama sonuçları results.txt dosyasına yazıldı.");
+            System.out.println("results.txt dosyası oluşturuldu.");
         } catch (Exception e) {
             e.printStackTrace();
         }
