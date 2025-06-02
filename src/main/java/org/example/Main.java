@@ -49,7 +49,7 @@ public class Main{
                 String qid = entry.getKey();
                 String queryText = entry.getValue();
 
-                List<SearchResult> topDocs = searchWithLucene(queryText, 1000);  // max 1000 sonuç
+                List<SearchResult> topDocs = searchWithLucene(queryText, 1000);
                 int rank = 1;
                 for (SearchResult result : topDocs) {
                     writer.write(String.format("%s\tQ0\t%s\t%d\t%.6f\tLetter_Tokenizer\n",
